@@ -14,9 +14,8 @@ import 'package:flutter/services.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:wechat_assets_picker/src/widget/builder/value_listenable_builder_2.dart';
 import 'package:wechat_picker_library/wechat_picker_library.dart';
- 
+
 import '../constants/constants.dart';
 import '../constants/enums.dart';
 import '../constants/typedefs.dart';
@@ -28,10 +27,7 @@ import '../widget/asset_picker.dart';
 import '../widget/asset_picker_app_bar.dart';
 import '../widget/asset_picker_viewer.dart';
 import '../widget/builder/asset_entity_grid_item_builder.dart';
-import '../widget/gaps.dart';
-import '../widget/platform_progress_indicator.dart';
-import '../widget/scale_text.dart';
-  
+
 /// The delegate to build the whole picker's components.
 ///
 /// By extending the delegate, you can customize every components on you own.
@@ -1903,34 +1899,33 @@ class DefaultAssetPickerBuilderDelegate
                           end: 20,
                         ),
                         child: ExcludeSemantics(
-                           child: Row(
-                            children: <Widget>[
-                              Flexible(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.only(
-                                    end: 10,
-                                  ),
-                                  child: ScaleText(
-                                    name,
-                                    style: const TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.white,
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                          child: Row(children: <Widget>[
+                            Flexible(
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.only(
+                                  end: 10,
                                 ),
-                              ),
-                              if (semanticsCount != null)
-                                ScaleText(
-                                  '($semanticsCount)',
+                                child: ScaleText(
+                                  name,
                                   style: const TextStyle(
-                                    color: Colors.white,
                                     fontSize: 17,
+                                    color: Colors.white,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
+                              ),
+                            ),
+                            if (semanticsCount != null)
+                              ScaleText(
+                                '($semanticsCount)',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
 //                            child: ScaleText.rich(
 //                             [
 //                               TextSpan(text: name),
@@ -1940,7 +1935,7 @@ class DefaultAssetPickerBuilderDelegate
 //                             style: const TextStyle(fontSize: 17),
 //                             maxLines: 1,
 //                             overflow: TextOverflow.ellipsis,
-//                           ),
+                          ]),
                         ),
                       ),
                     ),

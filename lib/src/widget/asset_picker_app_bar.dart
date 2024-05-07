@@ -6,11 +6,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
- 
-import '../constants/extensions.dart';
-import 'package:flutter/services.dart';
-import 'package:wechat_picker_library/wechat_picker_library.dart';
- 
+
 /// A custom app bar.
 /// 自定义的顶栏
 class AssetPickerAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -103,10 +99,10 @@ class AssetPickerAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-     final IconThemeData iconTheme = this.iconTheme ?? theme.iconTheme;
-     final AppBarTheme appBarTheme = theme.appBarTheme;
+    final IconThemeData iconTheme = this.iconTheme ?? theme.iconTheme;
+    final AppBarTheme appBarTheme = theme.appBarTheme;
 
-     final Widget? titleWidget;
+    final Widget? titleWidget;
     if (centerTitle) {
       titleWidget = Center(child: title);
     } else {
@@ -176,6 +172,9 @@ class AssetPickerAppBar extends StatelessWidget implements PreferredSizeWidget {
       );
     }
 
+    final Color effectiveBackgroundColor =
+        backgroundColor ?? theme.colorScheme.surface;
+
     // Allow custom blur radius using [ui.ImageFilter.blur].
     if (blurRadius > 0.0) {
       child = ClipRect(
@@ -192,12 +191,12 @@ class AssetPickerAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: child,
     );
 
-     child = Column(
+    child = Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         child,
         if (bottom != null) bottom!,
-      ], 
+      ],
 //     // Set [SystemUiOverlayStyle] according to the brightness.
 //     final Color effectiveBackgroundColor = backgroundColor ??
 //         appBarTheme.backgroundColor ??
@@ -215,7 +214,7 @@ class AssetPickerAppBar extends StatelessWidget implements PreferredSizeWidget {
 //     child = AnnotatedRegion<SystemUiOverlayStyle>(
 //       value: overlayStyle,
 //       child: child,
-     );
+    );
 
     final Widget result = Material(
       // Wrap to ensure the child rendered correctly.
